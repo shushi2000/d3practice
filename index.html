@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>shishu.info</title>
-		<h1>Site Under Construction...</h1>
-	</head>
-	<body>
-		<img src="img/under-construction.gif" width = 400>
-	</body>
-</html>
+<head>
+	<title>A test chart</title>
+	<link rel="stylesheet" href="style.css">
+	<script src = "http://d3js.org/d3.v3.min.js"></script>
+	<script src = "http://dimplejs.org/dist/dimple.v2.1.6.min.js">
+	</script>
+	<style type="text/css" src="style/style2.css"></style>
+
+
+	<h1>Data Visualization Project</h1>
+	<h2></h2>
+</head>
+
+<body>
+	<p></p>
+	<p></p>
+	<script type="text/javascript">
+	var svg = dimple.newSvg("body", 1000, 750);
+
+	function plot(data){
+		var fig = new dimple.chart(svg, data);
+		y = fig.addMeasureAxis("y", "avg");
+		x = fig.addCategoryAxis("x", "handedness");
+		x.title = "Handedness";
+		/*z = fig.addMeasureAxis("z","BMI");*/
+		fig.addSeries(["avg","handedness"],dimple.plot.bubble);
+		
+		fig.draw()
+	}
+
+	d3.csv("baseball_data.csv", plot);
+	
+	</script>
+</body>
